@@ -1,15 +1,14 @@
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
 public class DataManager {
 
 
-    private ArrayList<Country> readFile(File fileObject)  {
+    public ArrayList<String> readFile(File fileObject) {
         Scanner reader;
-        ArrayList<Country> dataList = new ArrayList<>();
+        ArrayList<String> dataList = new ArrayList<>();
 
         try {
             reader = new Scanner(fileObject);
@@ -19,23 +18,27 @@ public class DataManager {
         }
 
         while (reader.hasNextLine()) {
-            String[] countryAndCapital = reader.nextLine().split("\\|");
-            System.out.println(Arrays.toString(countryAndCapital));
-            dataList.add(new Country(countryAndCapital));
-//            System.out.println(dataList);
+            String dataFile = reader.nextLine();
+            dataList.add(dataFile);
         }
         reader.close();
         return dataList;
     }
 
-    public static void main(String[] args) {
-        File fileName = new File("countries_and_capitals.txt");
-
+    public ArrayList<Country> getCountriesAndCapitals() {
         DataManager dataManager = new DataManager();
+        File fileName = new File("countries_and_capitals.txt");
+        ArrayList<String> record = dataManager.readFile(fileName);
+        ArrayList<Country> dataList = new ArrayList<>();
 
+        for (int i=0; i < record.size(); i++) {
+            String[] countryAndCapital = record.get(i).split(" \\| ");
+            dataList.add(new Country(countryAndCapital));
+            System.out.println(Arrays.toString(countryAndCapital));
 
-        System.out.println(dataManager.readFile(fileName));
-
+        }
+        return dataList;
     }
 
 }
+
