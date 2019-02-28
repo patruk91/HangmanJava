@@ -35,7 +35,7 @@ public class Word {
             userGuessedLetters += guessLetter;
         } else {
 //            number of faults++
-            userFaultLetters += guessLetter;
+            userFaultLetters += guessLetter + ", ";
         }
     }
 

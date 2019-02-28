@@ -30,8 +30,8 @@ public class Player {
         this.guessLives -= livesToDecrease;
     }
 
-    public int increaseTries() {
-        return guessTries++;
+    public void increaseTries() {
+        guessTries++;
     }
 
     public long startTime() {
@@ -49,5 +49,9 @@ public class Player {
 
     public void setGuessLives(int guessLives) {
         this.guessLives = guessLives;
+    }
+
+    public void setGuessTries(int guessTries) {
+        this.guessTries = guessTries;
     }
 }

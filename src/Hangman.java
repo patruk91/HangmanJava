@@ -7,11 +7,7 @@ public class Hangman {
         System.out.print("Please, provide your name: ");
         String playerName = reader.nextLine();
 
-
         Player player = new Player(playerName, 0, 10);
-
-
-
 
         String userInput = "y";
         while (userInput.equals("y")){
@@ -19,13 +15,14 @@ public class Hangman {
             String chosenCapital = word.getRandomCapital();
             player.setGuessLives(10);
             System.out.println(word.toString());
+            long startTime = player.startTime();
 
             boolean gameWon = false;
             while (player.getGuessLives() > 0 && !gameWon) {
                 System.out.println("\nLives: " + player.getGuessLives());
                 System.out.println("Tries: " + player.getGuessTries());
                 System.out.println("User fault letters/words: " + word.getUserFaultLetters());
-                System.out.println("User good letters/words: " + word.getUserGuessedLetters());
+//                System.out.println("User good letters/words: " + word.getUserGuessedLetters());
 
                 System.out.println(word.hiddenWord(chosenCapital));
 
@@ -46,22 +43,35 @@ public class Hangman {
 
                             player.decreaseLives(2);
                             word.addUserFailure(userGuess);
+                            player.increaseTries();
                         }
                     } else {
-                        word.correctWrongLetter(chosenCapital, userGuess);
                         if (chosenCapital.contains(userGuess)) {
+                            player.increaseTries();
                         } else {
-                            player.decreaseLives(1);
+                            player.increaseTries();
+                            if (!word.getUserFaultLetters().contains(userGuess)){
+                                player.decreaseLives(1);
+                            }
                         }
+                        word.correctWrongLetter(chosenCapital, userGuess);
+
+
+
+
+
+
+
                     }
                 }
 
             }
-
-
-
+            long totalTime = (player.endTime() - startTime) / 1000;
+            System.out.println(totalTime);
             System.out.print("Do you want to continue?: ");
             userInput = reader.nextLine();
+            player.setGuessLives(10);
+            player.setGuessTries(0);
         }
     }
 }
