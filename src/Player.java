@@ -19,15 +19,15 @@ public class Player {
     }
 
     public int getGuessLives() {
-        return guessLives;
+        return this.guessLives;
     }
 
     public int getGuessTries() {
         return guessTries;
     }
 
-    public int decreaseLives(int livesToDecrease) {
-        return guessLives - livesToDecrease;
+    public void decreaseLives(int livesToDecrease) {
+        this.guessLives -= livesToDecrease;
     }
 
     public int increaseTries() {
@@ -47,5 +47,7 @@ public class Player {
         return incorrectLetterOrWords;
     }
 
-
+    public void setGuessLives(int guessLives) {
+        this.guessLives = guessLives;
+    }
 }

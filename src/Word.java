@@ -4,15 +4,18 @@ import java.util.Random;
 public class Word {
     private DataManager dataManager = new DataManager();
     private ArrayList<Country> dataCountryCapital = dataManager.getCountriesAndCapitals();
-    private int randomNumber = new Random().nextInt(dataCountryCapital.size());
+    private int randomNumber;
 
     private String userGuessedLetters;
     private String userFaultLetters;
+    String secretWord;
+
 
 
     public Word() {
         this.userGuessedLetters = "";
         this.userFaultLetters = "";
+        this.randomNumber = new Random().nextInt(dataCountryCapital.size());
     }
 
     public String getRandomCountry() {
@@ -37,7 +40,7 @@ public class Word {
     }
 
     public String hiddenWord(String capital) {
-        String secretWord = "";
+        secretWord = "";
 
         for (int i=0; i < capital.length(); i++) {
             String guessLetter = Character.toString(capital.charAt(i));
@@ -53,10 +56,19 @@ public class Word {
         return secretWord;
     }
 
-    public String toString1() {
-        return "Word{" +
-                "userGuessedLetters='" + userGuessedLetters + '\'' +
-                ", userFaultLetters='" + userFaultLetters + '\'' +
-                '}';
+    public String getUserGuessedLetters() {
+        return userGuessedLetters;
+    }
+
+    public String getUserFaultLetters() {
+        return userFaultLetters;
+    }
+
+    public void addUserFailure(String word) {
+        userFaultLetters += word;
+    }
+
+    public String getSecretWord() {
+        return secretWord;
     }
 }
