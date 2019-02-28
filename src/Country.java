@@ -17,7 +17,7 @@ public class Country {
 
     @Override
     public String toString() {
-        return country + " " + capital + "\n";
+        return country + " " + capital;
     }
 
 }

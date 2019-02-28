@@ -14,12 +14,13 @@ public class Hangman {
             Word word = new Word();
             String chosenCapital = word.getRandomCapital().toUpperCase();
             player.setGuessLives(10);
-            System.out.println(word.toString());
             long startTime = player.startTime();
 
             boolean gameWon = false;
             while (player.getGuessLives() > 0 && !gameWon) {
-                System.out.println("\nLives: " + player.getGuessLives());
+                clearScreen();
+                System.out.println(word.toString());
+                System.out.println("Lives: " + player.getGuessLives());
                 System.out.println("Tries: " + player.getGuessTries());
                 System.out.println("User fault letters/words: " + word.getUserFaultLetters());
 //                System.out.println("User good letters/words: " + word.getUserGuessedLetters());
@@ -73,5 +74,10 @@ public class Hangman {
             player.setGuessLives(10);
             player.setGuessTries(0);
         }
+    }
+
+    public static void clearScreen() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
     }
 }
