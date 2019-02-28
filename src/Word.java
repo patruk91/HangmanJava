@@ -65,7 +65,7 @@ public class Word {
     }
 
     public void addUserFailure(String word) {
-        userFaultLetters += word;
+        userFaultLetters +=  ", " + word;
     }
 
     public String getSecretWord() {

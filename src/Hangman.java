@@ -12,7 +12,7 @@ public class Hangman {
         String userInput = "y";
         while (userInput.equals("y")){
             Word word = new Word();
-            String chosenCapital = word.getRandomCapital();
+            String chosenCapital = word.getRandomCapital().toUpperCase();
             player.setGuessLives(10);
             System.out.println(word.toString());
             long startTime = player.startTime();
@@ -32,8 +32,11 @@ public class Hangman {
                     // do winning screen
                     // show highscore
                 } else {
+                    if (player.getGuessLives() <= 1) {
+                        System.out.println("HINT: The capital of: " + word.getRandomCountry());
+                    }
                     System.out.print("Please, give me a word or letter: ");
-                    String userGuess = reader.nextLine();
+                    String userGuess = reader.nextLine().toUpperCase();
                     if (userGuess.length() > 1) {
                         if (userGuess.equals(chosenCapital)) {
                             gameWon = true;
@@ -56,18 +59,15 @@ public class Hangman {
                         }
                         word.correctWrongLetter(chosenCapital, userGuess);
 
-
-
-
-
-
-
                     }
                 }
 
             }
             long totalTime = (player.endTime() - startTime) / 1000;
-            System.out.println(totalTime);
+            if (gameWon) {
+                System.out.printf("%s you guessed after %s tries. It took you %d seconds."
+                        ,playerName, player.getGuessTries(), totalTime);
+            }
             System.out.print("Do you want to continue?: ");
             userInput = reader.nextLine();
             player.setGuessLives(10);
