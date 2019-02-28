@@ -1,4 +1,5 @@
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -7,13 +8,16 @@ public class DataManager {
 
 
     public ArrayList<String> readFile(File fileObject) {
+
         Scanner reader;
         ArrayList<String> dataList = new ArrayList<>();
 
         try {
             reader = new Scanner(fileObject);
-        } catch (Exception error) {
+        } catch (FileNotFoundException error) {
             System.out.println("We couldn't read the file. Error: " + error.getMessage());
+//            error.printStackTrace();
+            // or throw exception??????????
             return dataList;
         }
 
