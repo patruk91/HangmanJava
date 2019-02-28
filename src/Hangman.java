@@ -1,22 +1,38 @@
+import java.util.Scanner;
+
 public class Hangman {
     public static void main(String[] args) {
+        Scanner reader = new Scanner(System.in);
+        System.out.print("Please, provide your name: ");
+        String playerName = reader.nextLine();
 
-//        DataManager dataManager = new DataManager();
-//        ArrayList<Country> data = dataManager.getCountriesAndCapitals();
-//        for (Country item : data) {
-//            System.out.print(item.toString());
-//
-//        }
-
+        int GUESS_LIVES = 10;
+        Player player = new Player(playerName, 0, GUESS_LIVES);
 
         Word word = new Word();
         System.out.println(word.toString());
+        String chosenCapital = word.getRandomCapital();
 
-        System.out.println(word.getRandomCountry());
-        System.out.println(word.getRandomCapital());
+        String userInput = "y";
+        while (userInput.equals("y")){
+
+            boolean gameWon = false;
+            while (GUESS_LIVES > 0 && !gameWon) {
+                System.out.print("Please, give me a word or letter: ");
+                String userGuess = reader.nextLine();
+                word.correctWrongLetter(chosenCapital, userGuess);
+                System.out.println(word.hiddenWord(chosenCapital));
+                System.out.println(word.toString1());
+
+
+
+            }
 
 
 
 
+
+            userInput = reader.nextLine();
+        }
     }
 }
