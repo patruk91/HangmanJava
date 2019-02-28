@@ -1,5 +1,3 @@
-import java.lang.reflect.Array;
-
 public class Country {
     private String country;
     private String capital;

@@ -1,7 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class DataManager {
@@ -38,7 +37,6 @@ public class DataManager {
         for (int i=0; i < record.size(); i++) {
             String[] countryAndCapital = record.get(i).split(" \\| ");
             dataList.add(new Country(countryAndCapital));
-            System.out.println(Arrays.toString(countryAndCapital));
 
         }
         return dataList;
