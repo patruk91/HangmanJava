@@ -1,16 +1,16 @@
 import java.lang.reflect.Array;
 
 public class Country {
-    private String name;
+    private String country;
     private String capital;
 
     public Country(String[] countryAndCapital) {
-        this.name = countryAndCapital[0];
+        this.country = countryAndCapital[0];
         this.capital = countryAndCapital[1];
     }
 
-    public String getName() {
-        return name;
+    public String getCountry() {
+        return country;
     }
 
     public String getCapital() {
@@ -19,7 +19,7 @@ public class Country {
 
     @Override
     public String toString() {
-        return name + " " + capital + "\n";
+        return country + " " + capital + "\n";
     }
 
 }
