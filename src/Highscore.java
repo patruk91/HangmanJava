@@ -3,9 +3,12 @@ import java.lang.reflect.Array;
 import java.util.*;
 
 public class Highscore {
+    public Highscore() {
+    }
 
 
-    public static void main(String[] args) {
+
+    public void showHighscore() {
         DataManager dataManager = new DataManager();
 
 //        System.out.println(dataManager.readFile(new File("highscore.txt")));
