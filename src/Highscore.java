@@ -2,7 +2,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class HangmanLogic {
+public class Highscore {
     public static void main(String[] args) {
         DataManager dataManager = new DataManager();
 
@@ -12,8 +12,31 @@ public class HangmanLogic {
 
         ArrayList<String> results = new ArrayList<>();
 
-        Integer[] columnsWidth = {0, 0, 0, 0, 0};
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // width colums
+        Integer[] columnsWidth = {0, 0, 0, 0, 0};
         for (String line : totalHighscore) {
             String[] record = line.split(";");
 
