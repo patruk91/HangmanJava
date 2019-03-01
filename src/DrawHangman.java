@@ -1,44 +1,36 @@
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Map;
+
 
 public class DrawHangman {
-    DataManager dataManager = new DataManager();
-    File fileName = new File("draw_hangman.txt");
-    ArrayList<String> record = dataManager.readFile(fileName);
 
     public DrawHangman() {
     }
 
-
     public void draw(int lives) {
-        int value = record.size();
+        DataManager dataManager = new DataManager();
+        File fileName = new File("draw_hangman.txt");
+        ArrayList<String> record = dataManager.readFile(fileName);
+        int sizeOfHangmanASCII = 10;
+        int lineNumber = 0;
 
-        for (int i=0; i < value; i++) {
-            if (lives >= 8) {
-                value = 10;
-                System.out.println(record.get(i));
-            } else if (lives >= 6) {
-                value = 10;
-                System.out.println(record.get(i + 10));
-            } else if (lives >= 4) {
-                value = 10;
-                System.out.println(record.get(i + 20));
-            }else if (lives >= 2) {
-                value = 10;
-                System.out.println(record.get(i + 30));
-            } else if (lives > 0){
-                value = 10;
-                System.out.println(record.get(i + 40));
-            } else if (lives <= 0) {
-                value = 10;
-                System.out.println(record.get(i + 50));
+        HashMap<Integer, Integer> drawOfHangman = new HashMap<>();
+        for (int userLives=10; userLives >= 0; userLives--) {
+            if (lineNumber % 2 == 0) {
+                drawOfHangman.put(userLives, lineNumber);
+            } else {
+                drawOfHangman.put(userLives, lineNumber - 5);
             }
+            lineNumber += 5;
+        }
+        System.out.println(drawOfHangman);
+
+        for (int i=0; i < sizeOfHangmanASCII; i++) {
+                int line = drawOfHangman.get(lives);
+                System.out.println(record.get(i + line));
         }
     }
-
 }
 
 

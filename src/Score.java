@@ -1,4 +1,3 @@
-
 public class Score {
     private String name;
     private String date;
