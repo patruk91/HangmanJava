@@ -1,5 +1,3 @@
-import java.lang.reflect.Array;
-import java.util.Arrays;
 
 public class Score {
     private String name;
@@ -7,7 +5,6 @@ public class Score {
     private String time;
     private String tries;
     private String town;
-    private String[] score;
 
     public Score(String[] score) {
         this.name = score[0];
@@ -15,16 +12,23 @@ public class Score {
         this.time = score[2];
         this.tries = score[3];
         this.town = score[4];
-        this.score = score;
 
     }
 
-    public int getTries() {
-        return Integer.parseInt(tries);
+    public String getName() {
+        return name;
+    }
+
+    public String getDate() {
+        return date;
     }
 
     public String getTime() {
         return time;
+    }
+
+    public int getTries() {
+        return Integer.parseInt(tries);
     }
 
     public String getTown() {
@@ -35,27 +39,6 @@ public class Score {
     public String toString() {
         return String.format("%s,%s,%s,%s,%s",name,date,time,tries,town);
     }
-
-    public String toName() {
-        return name;
-    }
-
-    public String toDate() {
-        return date;
-    }
-
-    public String toTime() {
-        return time;
-    }
-
-    public String toTries() {
-        return tries;
-    }
-
-    public String toTown() {
-        return town;
-    }
-
 }
 
 

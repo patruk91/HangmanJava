@@ -1,5 +1,4 @@
 import java.io.File;
-import java.util.Random;
 import java.util.Scanner;
 
 public class Hangman {
@@ -76,10 +75,10 @@ public class Hangman {
                 clearScreen();
                 System.out.printf("%s you guessed after %s tries. It took you %d seconds.\n\n"
                         ,playerName, player.getGuessTries(), totalTime);
-                dataManager.fileHandler(new File("highscore.txt"),
+                dataManager.fileHandler(new File("HighScore.txt"),
                         player.playerHighscore("" + totalTime, chosenCapital));
-                Highscore score = new Highscore();
-                score.showHighscore();
+                HighScore score = new HighScore();
+                score.displayHighScore();
             } else if (player.getGuessLives() <= 0) {
                 draw.draw(player.getGuessLives());
             }
