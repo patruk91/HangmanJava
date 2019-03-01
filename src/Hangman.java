@@ -29,15 +29,13 @@ public class Hangman {
                 System.out.println("Lives: " + player.getGuessLives());
                 System.out.println("Tries: " + player.getGuessTries());
                 System.out.println("User fault letters/words: " + word.getUserFaultLetters());
-//                System.out.println("User good letters/words: " + word.getUserGuessedLetters());
 
                 System.out.println(word.hiddenWord(chosenCapital));
 
 
                 if (chosenCapital.equals(word.secretWord)) {
                     gameWon = true;
-                    // do winning screen
-                    // show highscore
+
                 } else {
                     if (player.getGuessLives() <= 1) {
                         System.out.println("HINT: The capital of: " + word.getRandomCountry());
@@ -47,8 +45,7 @@ public class Hangman {
                     if (userGuess.length() > 1) {
                         if (userGuess.equals(chosenCapital)) {
                             gameWon = true;
-                            // do winning screen
-                            // show highscore
+
                         } else {
 
                             player.decreaseLives(2);
@@ -76,7 +73,7 @@ public class Hangman {
                 System.out.printf("%s you guessed after %s tries. It took you %d seconds.\n\n"
                         ,playerName, player.getGuessTries(), totalTime);
                 dataManager.fileHandler(new File("HighScore.txt"),
-                        player.playerHighscore("" + totalTime, chosenCapital));
+                        player.playerHighScore("" + totalTime, chosenCapital));
                 HighScore score = new HighScore();
                 score.displayHighScore();
             } else if (player.getGuessLives() <= 0) {
@@ -90,7 +87,7 @@ public class Hangman {
     }
 
 
-    public static void clearScreen() {
+    private static void clearScreen() {
         System.out.print("\033[H\033[2J");
         System.out.flush();
     }

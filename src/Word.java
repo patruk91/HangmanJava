@@ -34,7 +34,6 @@ public class Word {
         if (capital.contains(guessLetter) || userGuessedLetters.contains(guessLetter)) {
             userGuessedLetters += guessLetter;
         } else {
-//            number of faults++
             userFaultLetters += guessLetter + ", ";
         }
     }
@@ -56,10 +55,6 @@ public class Word {
         return secretWord;
     }
 
-    public String getUserGuessedLetters() {
-        return userGuessedLetters;
-    }
-
     public String getUserFaultLetters() {
         return userFaultLetters;
     }
@@ -68,7 +63,4 @@ public class Word {
         userFaultLetters +=  ", " + word;
     }
 
-    public String getSecretWord() {
-        return secretWord;
-    }
 }

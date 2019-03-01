@@ -6,7 +6,6 @@ import java.util.Scanner;
 
 public class DataManager {
 
-
     public ArrayList<String> readFile(File fileObject) {
 
         Scanner reader;
@@ -17,7 +16,7 @@ public class DataManager {
         } catch (FileNotFoundException error) {
             System.out.println("We couldn't read the file. Error: " + error.getMessage());
 //            error.printStackTrace();
-            // or throw exception??????????
+//            or throw exception??????????
             return dataList;
         }
 
@@ -43,8 +42,8 @@ public class DataManager {
         return dataList;
     }
 
-    public FileWriter fileHandler(File fileObject, String text) {
-        FileWriter writer=null;
+    public void fileHandler(File fileObject, String text) {
+        FileWriter writer;
 
         try {
             writer = new FileWriter(fileObject, true);
@@ -53,7 +52,6 @@ public class DataManager {
         } catch (Exception error) {
             System.out.println("We couldn't append to the file. Error: " + error.getMessage());
         }
-        return writer;
     }
 
 }

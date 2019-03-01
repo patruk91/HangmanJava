@@ -14,10 +14,6 @@ public class Player {
         this.guessLives = guessLives;
     }
 
-    public String getName() {
-        return name;
-    }
-
     public int getGuessLives() {
         return this.guessLives;
     }
@@ -42,7 +38,6 @@ public class Player {
         return System.currentTimeMillis();
     }
 
-
     public void setGuessLives(int guessLives) {
         this.guessLives = guessLives;
     }
@@ -51,7 +46,7 @@ public class Player {
         this.guessTries = guessTries;
     }
 
-    public String playerHighscore(String totalTime, String capital) {
+    public String playerHighScore(String totalTime, String capital) {
         DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:MM");
         Calendar calendar = Calendar.getInstance();
         return String.format("%s;%s;%s;%s;%s\n", this.name,dateFormat.format(calendar.getTime()),
