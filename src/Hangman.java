@@ -70,6 +70,7 @@ public class Hangman {
             if (gameWon) {
                 System.out.printf("%s you guessed after %s tries. It took you %d seconds."
                         ,playerName, player.getGuessTries(), totalTime);
+                System.out.println(player.playerHighscore(" " + totalTime, chosenCapital));
             } else if (player.getGuessLives() <= 0) {
                 draw.draw(player.getGuessLives());
             }
@@ -79,7 +80,7 @@ public class Hangman {
             player.setGuessTries(0);
         }
     }
-    
+
 
     public static void clearScreen() {
         System.out.print("\033[H\033[2J");

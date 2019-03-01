@@ -1,11 +1,11 @@
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class Player {
     private String name;
     private int guessTries;
     private int guessLives;
-    private ArrayList<String> incorrectLetterOrWords = new ArrayList<>();
 
 
     public Player(String name, int guessTries, int guessLives) {
@@ -42,10 +42,6 @@ public class Player {
         return System.currentTimeMillis();
     }
 
-    public ArrayList<String> badLettersOrWords(String letterOrWord) {
-        incorrectLetterOrWords.add(letterOrWord);
-        return incorrectLetterOrWords;
-    }
 
     public void setGuessLives(int guessLives) {
         this.guessLives = guessLives;
@@ -53,5 +49,13 @@ public class Player {
 
     public void setGuessTries(int guessTries) {
         this.guessTries = guessTries;
+    }
+
+    public String playerHighscore(String totalTime, String capital) {
+        DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:MM");
+        Calendar calendar = Calendar.getInstance();
+        Word word = new Word();
+        return String.format("%s,%s,%s,%s,%s", this.name,dateFormat.format(calendar.getTime()),
+                totalTime, this.guessTries, capital);
     }
 }
