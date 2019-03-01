@@ -54,8 +54,7 @@ public class Player {
     public String playerHighscore(String totalTime, String capital) {
         DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:MM");
         Calendar calendar = Calendar.getInstance();
-        Word word = new Word();
-        return String.format("%s,%s,%s,%s,%s", this.name,dateFormat.format(calendar.getTime()),
+        return String.format("%s;%s;%s;%s;%s\n", this.name,dateFormat.format(calendar.getTime()),
                 totalTime, this.guessTries, capital);
     }
 }

@@ -1,9 +1,12 @@
+import java.io.File;
 import java.util.Random;
 import java.util.Scanner;
 
 public class Hangman {
     public static void main(String[] args) {
         Scanner reader = new Scanner(System.in);
+        DataManager dataManager = new DataManager();
+
         System.out.print("Please, provide your name: ");
         String playerName = reader.nextLine();
 
@@ -70,7 +73,8 @@ public class Hangman {
             if (gameWon) {
                 System.out.printf("%s you guessed after %s tries. It took you %d seconds."
                         ,playerName, player.getGuessTries(), totalTime);
-                System.out.println(player.playerHighscore(" " + totalTime, chosenCapital));
+                dataManager.fileHandler(new File("highscore.txt"),
+                        player.playerHighscore("" + totalTime, chosenCapital));
             } else if (player.getGuessLives() <= 0) {
                 draw.draw(player.getGuessLives());
             }

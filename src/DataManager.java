@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -42,5 +43,17 @@ public class DataManager {
         return dataList;
     }
 
-}
+    public FileWriter fileHandler(File fileObject, String text) {
+        FileWriter writer=null;
 
+        try {
+            writer = new FileWriter(fileObject, true);
+            writer.write(text);
+            writer.close();
+        } catch (Exception error) {
+            System.out.println("We couldn't append to the file. Error: " + error.getMessage());
+        }
+        return writer;
+    }
+
+}
