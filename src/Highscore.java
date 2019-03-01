@@ -19,21 +19,8 @@ public class Highscore {
             sortedhighscore.add(new Score(record));
         }
 
-//        System.out.println(sortedhighscore.get(0).getTries());
-//        System.out.println(Arrays.asList(sortedhighscore.toArray()));
-//        sortedhighscore.sort(Comparator.comparing(Score::getTries));
-//        System.out.println(sortedhighscore);
-//
-//        System.out.println();
-//
-//        for (Score item : sortedhighscore) {
-//            System.out.println(item.toString());
-//        }
+        sortedhighscore.sort(Comparator.comparing(Score::getTries));
 
-        System.out.println(sortedhighscore.toString());
-
-
-        System.out.println("\n\n\n");
         // width colums
         Integer[] columnsWidth = {0, 0, 0, 0, 0};
         for (String line : totalHighscore) {
@@ -44,28 +31,18 @@ public class Highscore {
                     columnsWidth[i] = record[i].length();
                 }
             }
+
         }
 
-
-
-
-
-        System.out.println(Arrays.toString(columnsWidth));
-        //dynamic printing
         String format ="";
-
         for (int x:columnsWidth)
             format += "%-" + (x + 3) + "s ";
-
         format += "%n";
 
-        for (String line : totalHighscore) {
-            String[] record = line.split(";");
-
-                System.out.printf(format, record);
-            }
-
-
+        for (Score line : sortedhighscore) {
+            System.out.printf(format, line.toName(),
+                    line.toDate(), line.toTime(), line.getTries(), line.toTown());
+        }
     }
 }
 

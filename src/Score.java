@@ -33,9 +33,29 @@ public class Score {
 
     @Override
     public String toString() {
-        System.out.println(Arrays.asList(score));
-        return String.format("%s %s %s %s %s",name,date,time,tries,town);
+        return String.format("%s,%s,%s,%s,%s",name,date,time,tries,town);
     }
+
+    public String toName() {
+        return name;
+    }
+
+    public String toDate() {
+        return date;
+    }
+
+    public String toTime() {
+        return time;
+    }
+
+    public String toTries() {
+        return tries;
+    }
+
+    public String toTown() {
+        return town;
+    }
+
 }
 
 
