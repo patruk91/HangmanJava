@@ -8,6 +8,7 @@ public class Hangman {
         String playerName = reader.nextLine();
 
         Player player = new Player(playerName, 0, 10);
+        DrawHangman draw = new DrawHangman();
 
         String userInput = "y";
         while (userInput.equals("y")){
@@ -19,6 +20,7 @@ public class Hangman {
             boolean gameWon = false;
             while (player.getGuessLives() > 0 && !gameWon) {
                 clearScreen();
+                draw.draw(player.getGuessLives());
                 System.out.println(word.toString());
                 System.out.println("Lives: " + player.getGuessLives());
                 System.out.println("Tries: " + player.getGuessTries());
@@ -68,6 +70,8 @@ public class Hangman {
             if (gameWon) {
                 System.out.printf("%s you guessed after %s tries. It took you %d seconds."
                         ,playerName, player.getGuessTries(), totalTime);
+            } else if (player.getGuessLives() <= 0) {
+                draw.draw(player.getGuessLives());
             }
             System.out.print("Do you want to continue?: ");
             userInput = reader.nextLine();
@@ -75,6 +79,7 @@ public class Hangman {
             player.setGuessTries(0);
         }
     }
+    
 
     public static void clearScreen() {
         System.out.print("\033[H\033[2J");
