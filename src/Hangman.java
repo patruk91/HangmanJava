@@ -22,7 +22,7 @@ public class Hangman {
             boolean gameWon = false;
             while (player.getGuessLives() > 0 && !gameWon) {
                 clearScreen();
-                draw.draw(player.getGuessLives());
+                draw.drawHangman(player.getGuessLives());
                 if (args.length > 0 && args[0].equals("-demo")){
                     System.out.println("Secret word: " + word.toString());
                 }
@@ -80,7 +80,7 @@ public class Hangman {
                 HighScore score = new HighScore();
                 score.displayHighScore();
             } else if (player.getGuessLives() <= 0) {
-                draw.draw(player.getGuessLives());
+                draw.drawHangman(player.getGuessLives());
             }
             System.out.print("Do you want to continue?: ");
             userInput = reader.nextLine();

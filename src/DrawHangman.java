@@ -8,11 +8,20 @@ public class DrawHangman {
     public DrawHangman() {
     }
 
-    public void draw(int lives) {
+    public void drawHangman(int lives) {
         DataManager dataManager = new DataManager();
         File fileName = new File("draw_hangman.txt");
         ArrayList<String> record = dataManager.readFile(fileName);
+        
+        HashMap<Integer, Integer> drawOfHangman = getLivesLineNumberMap();
         int sizeOfHangmanASCII = 10;
+        for (int i=0; i < sizeOfHangmanASCII; i++) {
+                int line = drawOfHangman.get(lives);
+                System.out.println(record.get(i + line));
+        }
+    }
+
+    private HashMap<Integer, Integer> getLivesLineNumberMap() {
         int lineNumber = 0;
 
         HashMap<Integer, Integer> drawOfHangman = new HashMap<>();
@@ -24,13 +33,9 @@ public class DrawHangman {
             }
             lineNumber += 5;
         }
-        System.out.println(drawOfHangman);
-
-        for (int i=0; i < sizeOfHangmanASCII; i++) {
-                int line = drawOfHangman.get(lives);
-                System.out.println(record.get(i + line));
-        }
+        return drawOfHangman;
     }
+
 }
 
 
