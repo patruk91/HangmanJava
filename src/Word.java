@@ -10,7 +10,9 @@ public class Word {
     private String userFaultLetters;
     String secretWord;
 
-
+    public void setUserFaultLetters(String userFaultLetters) {
+        this.userFaultLetters = userFaultLetters;
+    }
 
     public Word() {
         this.userGuessedLetters = "";

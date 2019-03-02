@@ -7,9 +7,15 @@ public class Player {
     private int guessTries;
     private int guessLives;
 
-
-    public Player(String name, int guessTries, int guessLives) {
+    public void setName(String name) {
         this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Player(int guessTries, int guessLives) {
         this.guessTries = guessTries;
         this.guessLives = guessLives;
     }
@@ -30,13 +36,6 @@ public class Player {
         guessTries++;
     }
 
-    public long startTime() {
-        return System.currentTimeMillis();
-    }
-
-    public long endTime() {
-        return System.currentTimeMillis();
-    }
 
     public void setGuessLives(int guessLives) {
         this.guessLives = guessLives;
